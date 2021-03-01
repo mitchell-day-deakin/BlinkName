@@ -30,8 +30,9 @@ int led1 = D6; // Instead of writing D0 over and over again, we'll write led1
 
 int led2 = D7; // Instead of writing D7 over and over again, we'll write led2
 // This one is the little blue LED on your board. On the Photon it is next to D7, and on the Core it is next to the USB jack.
-int longBeep = 1700;
-int shortBeep = 700;
+int longBeep = 800;
+int shortBeep = 250;
+int letterGap = 1500;
 
 int d[3] = {longBeep, shortBeep, shortBeep};
 int a[2] = {shortBeep, longBeep};
@@ -52,9 +53,10 @@ void setup() {
 
 }
 
-int playLetter(int letter[], int size){
-     // To blink the LED, first we'll turn it on...
-  for(int i = 0; i<size; i++){
+void playLetter(int letter[], int size){
+
+  // And repeat!
+    for(int i = 0; i<size; i++){
         digitalWrite(led1, HIGH);
         digitalWrite(led2, HIGH);
        // We'll leave it on for 1 second...
@@ -67,7 +69,8 @@ int playLetter(int letter[], int size){
         // Wait 1 second...
         delay(1000);
   }
-  // And repeat!
+  
+  delay(letterGap);
 }
 
 // Next we have the loop function, the other essential part of a microcontroller program.
@@ -75,9 +78,9 @@ int playLetter(int letter[], int size){
 // Note: Code that blocks for too long (like more than 5 seconds), can make weird things happen (like dropping the network connection).  The built-in delay function shown below safely interleaves required background activity, so arbitrarily long delays can safely be done if you need them.
 
 void loop() {
-    playLetter(d, 3);
-    playLetter(a,2;
+         // To blink the LED, first we'll turn it on...
+    playLetter(d,3);
+    playLetter(a,2);
     playLetter(y, 4);
-    delay(3000);
 }
 
