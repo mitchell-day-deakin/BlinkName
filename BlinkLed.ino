@@ -53,7 +53,7 @@ void setup() {
 
 }
 
-void playLetter(int letter[], int size){
+void playLetter(int *letter, int size){
 
   // And repeat!
     for(int i = 0; i<size; i++){
@@ -79,8 +79,8 @@ void playLetter(int letter[], int size){
 
 void loop() {
          // To blink the LED, first we'll turn it on...
-    playLetter(d,3);
-    playLetter(a,2);
-    playLetter(y, 4);
+    playLetter(d,sizeof(d));
+    playLetter(a,sizeof(a));
+    playLetter(y,sizeof(y));
 }
 
